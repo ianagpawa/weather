@@ -13,16 +13,15 @@ import {
 
 class AsyncApp extends Component {
   constructor(props) {
-    super(props)
-    console.log('harlo')
+    super(props);
     
     // this.handleChange = this.handleChange.bind(this)
     // this.handleRefreshClick = this.handleRefreshClick.bind(this)
   }
 
   componentDidMount() {
-    console.log('here');
-    
+    const { getWeather } = this.props;
+    getWeather();
     // const { weatherDetails  } = this.props;
     // dispatch(fetchPostsIfNeeded(selectedSubreddit))
   }
@@ -49,6 +48,7 @@ class AsyncApp extends Component {
 
   render() {
     const { weatherDetails } = this.props;
+    console.log('weatherDetails, ', weatherDetails)
     return (
       <div>Rendered template</div>
     );
@@ -93,6 +93,7 @@ AsyncApp.propTypes = {
 
 function mapStateToProps(state) {
   const { weatherDetails } = state;
+  console.log('state, state', state)
   return { weatherDetails };
   // const { selectedSubreddit, postsBySubreddit } = state
   // const { isFetching, lastUpdated, items: posts } = postsBySubreddit[

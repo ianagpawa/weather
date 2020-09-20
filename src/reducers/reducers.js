@@ -65,7 +65,6 @@ import {
 // }
 
 function weatherDetails(state = {}, action) {
-  console.log(action.type, action.payload);
   switch (action.type) {
     case FETCH_WEATHER_SUCCESS:
       return { 
@@ -77,6 +76,10 @@ function weatherDetails(state = {}, action) {
       return state;
   }
 }
+
+// export const getWeatherDetails = state => state.weatherDetails;
+// export const getProductsPending = state => state.pending;
+// export const getProductsError = state => state.error;
 
 const rootReducer = combineReducers({
   weatherDetails

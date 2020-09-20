@@ -1,5 +1,5 @@
 import fetch from 'cross-fetch';
-
+import axios from 'axios';
 // export const REQUEST_POSTS = 'REQUEST_POSTS'
 // export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 // export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT'
@@ -73,11 +73,8 @@ export function getWeather() {
   return dispatch => {
     dispatch(fetchWeather());
     return fetch(url)
-      .then(response => {
-        console.log(response.json());
-        return response.json();
-      })
-      .then(json => dispatch(fetchWeatherSuccess(json)))
+      .then(response => response.json() )
+      .then(json => dispatch(fetchWeatherSuccess(json)) )
       .catch(err => dispatch(fetchWeatherFailure(err)));
   }
 }
