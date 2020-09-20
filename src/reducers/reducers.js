@@ -21,7 +21,10 @@ function forecastWeatherDetails(state = [], action) {
     case FETCH_FORECAST_WEATHER_SUCCESS:
       return [
         ...state,
-        ...action.payload.list
+        ...action.payload.list.filter(weather => {
+          // get weather at noon of each day.
+            return weather['dt_txt'].indexOf('12:00:00') > -1;
+        })
       ];
     default:
       return state;

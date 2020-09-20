@@ -1,6 +1,6 @@
 
 
-import { getRequest } from '../constants/utils';
+import { getRequest } from './API';
 
 export const FETCH_CURRENT_WEATHER = `FETCH_CURRENT_WEATHER`;
 export const FETCH_CURRENT_WEATHER_SUCCESS = `FETCH_CURRENT_WEATHER_SUCCESS`;
@@ -49,9 +49,14 @@ export function fetchForecastWeatherFailure(payload) {
   };
 }
 
-export function getCurrentWeather() {
+export function getCurrentWeather(
+  city = 'New York',
+  units = 'imperial'
+) {
   const params = {
     type: 'weather',
+    city,
+    units,
     fetchFunc: fetchCurrentWeather,
     fetchSuccessFunc: fetchCurrentWeatherSuccess,
     fetchFailureFunc: fetchCurrentWeatherFailure
@@ -59,9 +64,14 @@ export function getCurrentWeather() {
   return getRequest(params);
 }
 
-export function getForecastWeather() {
+export function getForecastWeather(
+  city = 'New York',
+  units = 'imperial'
+) {
   const params = {
     type: 'forecast',
+    city,
+    units,
     fetchFunc: fetchForecastWeather,
     fetchSuccessFunc: fetchForecastWeatherSuccess,
     fetchFailureFunc: fetchForecastWeatherFailure

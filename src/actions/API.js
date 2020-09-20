@@ -9,12 +9,11 @@ function getUrl(params) {
     return `http://api.openweathermap.org/data/2.5/${type}?q=${city}&units=${units}&appid=8a4604e1c9724c6c163653f91c504862`;
 }
 
-
 export const getRequest = (params)  => {
     const {
         type,
-        city = 'New York City',
-        units = 'imperial',
+        city,
+        units,
         fetchFunc,
         fetchSuccessFunc,
         fetchFailureFunc

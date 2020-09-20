@@ -8,9 +8,7 @@ import {
 } from '../actions/weather';
 
 class AsyncApp extends Component {
-  constructor(props) {
-    super(props);
-  }
+  constructor(props) { super(props); }
 
   componentDidMount() {
     const { 
@@ -71,7 +69,6 @@ function mapStateToProps(state) {
     currentWeatherDetails, 
     forecastWeatherDetails 
   } = state;
-  console.log('state, state', state)
   return { 
     currentWeatherDetails,
     forecastWeatherDetails 
