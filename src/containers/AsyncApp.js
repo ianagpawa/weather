@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import Home from '../components/Home';
 import {
   getCurrentWeather,
   getForecastWeather
@@ -27,7 +28,7 @@ class AsyncApp extends Component {
       forecastWeatherDetails
     } = this.props;
     return (
-      <div>Rendered template</div>
+      <Home />
     );
     // const { selectedSubreddit, posts, isFetching, lastUpdated } = this.props
     // return (
