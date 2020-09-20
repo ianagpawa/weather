@@ -64,11 +64,15 @@ import {
 //   }
 // }
 
-function weatherDetails(state = [], action) {
+function weatherDetails(state = {}, action) {
   console.log(action.type, action.payload);
   switch (action.type) {
     case FETCH_WEATHER_SUCCESS:
-      return [...state, ...action.payload];
+      return { 
+        ...state, 
+        ...action.payload 
+      };
+      // return [...state, ...action.payload];
     default:
       return state;
   }

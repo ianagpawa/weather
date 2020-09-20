@@ -1,4 +1,4 @@
-import fetch from 'cross-fetch'
+import fetch from 'cross-fetch';
 
 // export const REQUEST_POSTS = 'REQUEST_POSTS'
 // export const RECEIVE_POSTS = 'RECEIVE_POSTS'
@@ -68,7 +68,7 @@ export function fetchWeatherFailure(payload) {
 //   }
 // }
 // 8a4604e1c9724c6c163653f91c504862di
-function getWeather() {
+export function getWeather() {
   const url = `http://api.openweathermap.org/data/2.5/weather?q=New%20York%20City&appid=8a4604e1c9724c6c163653f91c504862`
   return dispatch => {
     dispatch(fetchWeather());

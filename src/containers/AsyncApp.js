@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import {
   // selectSubreddit,
   // fetchPostsIfNeeded,
@@ -13,11 +14,15 @@ import {
 class AsyncApp extends Component {
   constructor(props) {
     super(props)
+    console.log('harlo')
+    
     // this.handleChange = this.handleChange.bind(this)
     // this.handleRefreshClick = this.handleRefreshClick.bind(this)
   }
 
   componentDidMount() {
+    console.log('here');
+    
     // const { weatherDetails  } = this.props;
     // dispatch(fetchPostsIfNeeded(selectedSubreddit))
   }
@@ -82,7 +87,7 @@ AsyncApp.propTypes = {
   // posts: PropTypes.array.isRequired,
   // isFetching: PropTypes.bool.isRequired,
   // lastUpdated: PropTypes.number,
-  // dispatch: PropTypes.func.isRequired
+  // dispatch: PropTypes.func.isRequired,
   details: PropTypes.array
 }
 
@@ -105,4 +110,17 @@ function mapStateToProps(state) {
   // }
 }
 
-export default connect(mapStateToProps)(AsyncApp)
+// const mapDispatchToProps = (dispatch, ownProps) => {
+//   return {
+//     getWeather: () => dispatch(getWeather())
+//   }
+// }
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  getWeather
+}, dispatch)
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AsyncApp)
