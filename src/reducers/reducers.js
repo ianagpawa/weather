@@ -1,88 +1,36 @@
 import { combineReducers } from 'redux'
 import {
-  FETCH_WEATHER,
-  FETCH_WEATHER_SUCCESS,
-  FETCH_WEATHER_FAILURE
-} from '../actions/actions';
+  FETCH_CURRENT_WEATHER_SUCCESS,
+  FETCH_FORECAST_WEATHER_SUCCESS,
+} from '../actions/weather';
 
-// import {
-//   SELECT_SUBREDDIT,
-//   INVALIDATE_SUBREDDIT,
-//   REQUEST_POSTS,
-//   RECEIVE_POSTS
-// } from '../actions/actions'
-
-// function selectedSubreddit(state = 'reactjs', action) {
-//   switch (action.type) {
-//     case SELECT_SUBREDDIT:
-//       return action.subreddit
-//     default:
-//       return state
-//   }
-// }
-
-// function posts(
-//   state = {
-//     isFetching: false,
-//     didInvalidate: false,
-//     items: []
-//   },
-//   action
-// ) {
-//   switch (action.type) {
-//     case INVALIDATE_SUBREDDIT:
-//       return Object.assign({}, state, {
-//         didInvalidate: true
-//       })
-//     case REQUEST_POSTS:
-//       return Object.assign({}, state, {
-//         isFetching: true,
-//         didInvalidate: false
-//       })
-//     case RECEIVE_POSTS:
-//       return Object.assign({}, state, {
-//         isFetching: false,
-//         didInvalidate: false,
-//         items: action.posts,
-//         lastUpdated: action.receivedAt
-//       })
-//     default:
-//       return state
-//   }
-// }
-
-// function postsBySubreddit(state = {}, action) {
-//   switch (action.type) {
-//     case INVALIDATE_SUBREDDIT:
-//     case RECEIVE_POSTS:
-//     case REQUEST_POSTS:
-//       return Object.assign({}, state, {
-//         [action.subreddit]: posts(state[action.subreddit], action)
-//       })
-//     default:
-//       return state
-//   }
-// }
-
-function weatherDetails(state = {}, action) {
+function currentWeatherDetails(state = {}, action) {
   switch (action.type) {
-    case FETCH_WEATHER_SUCCESS:
+    case FETCH_CURRENT_WEATHER_SUCCESS:
       return { 
         ...state, 
         ...action.payload 
       };
-      // return [...state, ...action.payload];
     default:
       return state;
   }
 }
 
-// export const getWeatherDetails = state => state.weatherDetails;
-// export const getProductsPending = state => state.pending;
-// export const getProductsError = state => state.error;
+function forecastWeatherDetails(state = [], action) {
+  switch (action.type) {
+    case FETCH_FORECAST_WEATHER_SUCCESS:
+      return [
+        ...state,
+        ...action.payload.list
+      ];
+    default:
+      return state;
+  }
+}
 
 const rootReducer = combineReducers({
-  weatherDetails
+  currentWeatherDetails,
+  forecastWeatherDetails
 });
 
 export default rootReducer;
