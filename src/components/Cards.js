@@ -8,16 +8,19 @@ export default class Cards extends Component {
 			todayForecastWeatherDetails
 		} =  this.props;
 		return (forecastWeatherDetails || todayForecastWeatherDetails).map((day, i) => {
+			const key = forecastWeatherDetails ? `forecast${i}` : `today${i}`;
+			const temp = parseInt(day && day.main && day.main.temp);
+			const url = `http://openweathermap.org/img/wn/${day && day.weather && day.weather[0] && day.weather[0].icon }@2x.png`;
 			return (
-				<div className="forecast">
+				<div key={key} className="forecast">
 					<div className="forecast-header">
-						<div className="day">Tuesday + {i} </div>
+						<div className="day">Tuesday  </div>
 					</div>
 					<div className="forecast-content">
 						<div className="forecast-icon">
-							{/* <img src="images/icons/icon-3.svg" alt="" width=48> */}
+							<img src={url} />
 						</div>
-						<div className="degree">23<sup>o</sup>C</div>
+						<div className="degree">{temp}<sup>o</sup>F</div>
 						<small>18<sup>o</sup></small>
 					</div>
 				</div>

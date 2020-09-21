@@ -9,6 +9,8 @@ export default class CurrentWeather extends Component {
 		currentWeatherDetails,
 		todayForecastWeatherDetails
 	  } = this.props;
+	  const temp = parseInt(currentWeatherDetails && currentWeatherDetails.main && currentWeatherDetails.main.temp);
+	  const url = `http://openweathermap.org/img/wn/${currentWeatherDetails && currentWeatherDetails.weather && currentWeatherDetails.weather[0] && currentWeatherDetails.weather[0].icon }@2x.png`
       return (
 			<div className="forecast-table">
 				<div className="container">
@@ -21,9 +23,9 @@ export default class CurrentWeather extends Component {
 							<div className="forecast-content">
 								<div className="location">New York</div>
 								<div className="degree">
-									<div className="num">23<sup>o</sup>C</div>
+									<div className="num">{temp}<sup>o</sup>F</div>
 									<div className="forecast-icon">
-										{/* <img src="images/icons/icon-1.svg" alt="" width=90> */}
+										<img src={url} />
 									</div>	
 								</div>
 								{/* <span><img src="images/icon-umberella.png" alt="">20%</span>

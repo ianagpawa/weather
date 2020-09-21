@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import CurrentWeather from './CurrentWeather';
 import ForecastWeather from './ForecastWeather';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 export default class Home extends Component {
 	constructor(props) { super(props); }
@@ -88,21 +88,7 @@ export default class Home extends Component {
 }
 
 Home.propTypes = {
-	//   posts: PropTypes.array.isRequired
 	currentWeatherDetails: PropTypes.object,
 	forecastWeatherDetails: PropTypes.array,
 	todayForecastWeatherDetails: PropTypes.array
 }
-
-function mapStateToProps(state) {
-	const { 
-	  currentWeatherDetails, 
-	  forecastWeatherDetails,
-	  todayForecastWeatherDetails
-	} = state;
-	return { 
-	  currentWeatherDetails,
-	  forecastWeatherDetails,
-	  todayForecastWeatherDetails
-	};
-  }
