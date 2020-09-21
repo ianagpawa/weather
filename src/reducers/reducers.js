@@ -31,9 +31,22 @@ function forecastWeatherDetails(state = [], action) {
   }
 }
 
+function todayForecastWeatherDetails(state = [], action) {
+  switch (action.type) {
+    case FETCH_FORECAST_WEATHER_SUCCESS:
+      return [
+        ...state,
+        ...action.payload.list.slice(0,5)
+      ]
+    default:
+      return state;
+  }
+}
+
 const rootReducer = combineReducers({
   currentWeatherDetails,
-  forecastWeatherDetails
+  forecastWeatherDetails,
+  todayForecastWeatherDetails
 });
 
 export default rootReducer;

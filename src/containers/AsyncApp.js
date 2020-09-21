@@ -25,10 +25,15 @@ class AsyncApp extends Component {
   render() {
     const { 
       currentWeatherDetails,
-      forecastWeatherDetails
+      forecastWeatherDetails,
+      todayForecastWeatherDetails
     } = this.props;
     return (
-      <Home />
+      <Home 
+        currentWeatherDetails={this.props.currentWeatherDetails}
+        forecastWeatherDetails={this.props.forecastWeatherDetails}
+        todayForecastWeatherDetails={this.props.todayForecastWeatherDetails} 
+      />
     );
     // const { selectedSubreddit, posts, isFetching, lastUpdated } = this.props
     // return (
@@ -62,17 +67,20 @@ class AsyncApp extends Component {
 
 AsyncApp.propTypes = {
   currentWeatherDetails: PropTypes.object,
-  forecastWeatherDetails: PropTypes.array
+  forecastWeatherDetails: PropTypes.array,
+  todayForecastWeatherDetails: PropTypes.array
 }
 
 function mapStateToProps(state) {
   const { 
     currentWeatherDetails, 
-    forecastWeatherDetails 
+    forecastWeatherDetails,
+    todayForecastWeatherDetails
   } = state;
   return { 
     currentWeatherDetails,
-    forecastWeatherDetails 
+    forecastWeatherDetails,
+    todayForecastWeatherDetails
   };
 }
 

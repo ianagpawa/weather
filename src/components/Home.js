@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
 import CurrentWeather from './CurrentWeather';
 import ForecastWeather from './ForecastWeather';
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 export default class Home extends Component {
+	constructor(props) { super(props); }
   render() {
+	  const {
+		currentWeatherDetails,
+		forecastWeatherDetails,
+		todayForecastWeatherDetails
+	  } = this.props;
       return (
         //   <p className='hello'>Here</p>
         <div className="site-content">
@@ -43,10 +49,17 @@ export default class Home extends Component {
 
 				</div>
 			</div>
+			
+			<CurrentWeather 
+				currentWeatherDetails={currentWeatherDetails}
+				todayForecastWeatherDetails={todayForecastWeatherDetails}
+			/>
 
-            
-			<CurrentWeather />
-            <ForecastWeather />
+			<ForecastWeather
+				forecastWeatherDetails={forecastWeatherDetails}
+			/>
+
+
 			<footer className="site-footer">
 				<div className="container">
 					<div className="row">
@@ -69,12 +82,27 @@ export default class Home extends Component {
 					<p className="colophon">Copyright 2014 Company name. Designed by Themezy. All rights reserved</p>
 				</div>
 			</footer>
-            
 		</div>
       );
   }
 }
 
 Home.propTypes = {
-//   posts: PropTypes.array.isRequired
+	//   posts: PropTypes.array.isRequired
+	currentWeatherDetails: PropTypes.object,
+	forecastWeatherDetails: PropTypes.array,
+	todayForecastWeatherDetails: PropTypes.array
 }
+
+function mapStateToProps(state) {
+	const { 
+	  currentWeatherDetails, 
+	  forecastWeatherDetails,
+	  todayForecastWeatherDetails
+	} = state;
+	return { 
+	  currentWeatherDetails,
+	  forecastWeatherDetails,
+	  todayForecastWeatherDetails
+	};
+  }
