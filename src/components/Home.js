@@ -16,21 +16,18 @@ export default class Home extends Component {
 			<div className="site-header">
 				<div className="container">
 					<a href="index.html" className="branding">
-						{/* <img src="images/logo.png" alt="" className="logo"> */}
+						<a href="https://github.com/ianagpawa/weather" target="_blank">
 						<div className="logo-type">
-							<h1 className="site-title">Company name</h1>
-							<small className="site-description hello" id="hello">tagline goes here</small>
+							<h1 className="site-title">Weather Forecast</h1>
+							<small className="site-description hello" id="hello">Check out the code</small>
 						</div>
+						</a>
 					</a>
 
 					<div className="main-navigation">
-						<button type="button" className="menu-toggle"><i className="fa fa-bars"></i></button>
 						<ul className="menu">
-							<li className="menu-item current-menu-item"><a href="index.html">Home</a></li>
-							<li className="menu-item"><a href="news.html">News</a></li>
-							<li className="menu-item"><a href="live-cameras.html">Live cameras</a></li>
-							<li className="menu-item"><a href="photos.html">Photos</a></li>
-							<li className="menu-item"><a href="contact.html">Contact</a></li>
+							{/* <li className="menu-item current-menu-item"><a href="index.html">Home</a></li> */}
+							<li className="menu-item"><a href="https://ianagpawa.github.io/portfolio/" target="_blank">Portfolio</a></li>
 						</ul>
 					</div> 
 
