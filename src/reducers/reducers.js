@@ -18,6 +18,11 @@ function currentWeatherDetails(state = {}, action) {
 
 function forecastWeatherDetails(state = [], action) {
   switch (action.type) {
+    case FETCH_CURRENT_WEATHER_SUCCESS:
+      return [
+        action.payload,
+        ...state,
+      ];
     case FETCH_FORECAST_WEATHER_SUCCESS:
       return [
         ...state,
@@ -36,7 +41,7 @@ function todayForecastWeatherDetails(state = [], action) {
     case FETCH_FORECAST_WEATHER_SUCCESS:
       return [
         ...state,
-        ...action.payload.list.slice(0,5)
+        ...action.payload.list.slice(0,6)
       ]
     default:
       return state;
