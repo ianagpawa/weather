@@ -166,8 +166,8 @@
 			}
 			.forecast-content{
 				text-align: left;
-				padding-top: 30px;
-				padding-bottom: 30px;
+				// padding-top: 30px;
+				// padding-bottom: 30px;
 			}
 			.location{
 				@include em(18);
@@ -209,17 +209,24 @@
 		}
 
 		.forecast-content{
-			padding:  50px 20px 10px;
 			text-align: center;
+			height: 23vh;
 
-			.forecast-icon{margin-bottom: 20px;}
+			// .forecast-icon{margin-bottom: 20px;}
 
-			.degree{
+			.degree,
+			.site-description {
 				@include em(24);
 				color: white;
-				font-weight: 700;
+				font-weight: 700;			
 			}
-			small{@include em(16)}
+			.description {
+				margin-top: 60px;
+			}
+			small{
+				@include em(16);
+				
+			}
 		}
 	}
 }

@@ -29,8 +29,9 @@ export default class Cards extends Component {
 						<div className="forecast-icon">
 							<img src={url} />
 						</div>
+						<div className="description">{description}</div>
 						<div className="degree">{temp}<sup>o</sup>F</div>
-							<small>{description}</small>
+							
 					</div>
 				</div>
 			);

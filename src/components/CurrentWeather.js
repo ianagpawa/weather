@@ -32,7 +32,6 @@ export default class CurrentWeather extends Component {
 							</div> 
 							<div className="forecast-content">
 	  							<div className="location">{name}</div>
-								  {/* <div>{description}</div> */}
 								<div className="degree">
 									<div>{description}</div>
 									<div className="num">{temp}<sup>o</sup>F</div>
