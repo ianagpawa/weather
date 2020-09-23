@@ -6,7 +6,7 @@ function getUrl(params) {
         city,
         units
     } = params;
-    return `http://api.openweathermap.org/data/2.5/${type}?q=${city}&units=${units}&appid=8a4604e1c9724c6c163653f91c504862`;
+    return `https://api.openweathermap.org/data/2.5/${type}?q=${city}&units=${units}&appid=8a4604e1c9724c6c163653f91c504862`;
 }
 
 export const getRequest = (params)  => {

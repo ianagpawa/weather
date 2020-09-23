@@ -16,7 +16,7 @@ export default class Cards extends Component {
 			const { dt_txt } = day;
 			const temp = parseInt(day && day.main && day.main.temp);
 			const description = weather.main;
-			const url = `http://openweathermap.org/img/wn/${weather.icon }@2x.png`;
+			const url = `https://openweathermap.org/img/wn/${weather.icon }@2x.png`;
 			const dayName = getDayName(dt_txt);
 			const hour = getHour(dt_txt);
 			const dayOrText = key.indexOf('forecast') !== -1 ? dayName : hour;

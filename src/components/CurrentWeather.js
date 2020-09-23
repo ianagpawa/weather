@@ -12,7 +12,7 @@ export default class CurrentWeather extends Component {
 	  } = this.props;
 	  const temp = parseInt(currentWeatherDetails && currentWeatherDetails.main && currentWeatherDetails.main.temp);
 	  const weather = currentWeatherDetails && currentWeatherDetails.weather && currentWeatherDetails.weather[0];
-	  const url = `http://openweathermap.org/img/wn/${weather && weather.icon }@2x.png`;
+	  const url = `https://openweathermap.org/img/wn/${weather && weather.icon }@2x.png`;
 	  const description = weather && weather.main;
 	  const { 
 		  dt_txt,
