@@ -18,11 +18,11 @@ export default class Home extends Component {
         <div className="site-content">
 			<div className="site-header">
 				<div className="container">
-					<a href="index.html" className="branding">
+					<div className="branding">
 						<div className="logo-type">
 							<h1 className="site-title">Weather Forecast</h1>
 						</div>
-					</a>
+					</div>
 				</div>
 			</div>
 			
@@ -36,8 +36,8 @@ export default class Home extends Component {
 			<footer className="site-footer">
 				<div className="container">
 					<div className="row">
-						<div className="col-md-3 col-md-offset-8">
-							<div className="social-links">
+						<div className="col-md-4 col-md-offset-8">
+							<div className="social-links col-md-offset-6">
 								<a href="https://github.com/ianagpawa" target="_blank"><FontAwesomeIcon  icon={faGithub} /></a>
 								<a href="https://www.linkedin.com/in/ianagpawa" target="_blank"><FontAwesomeIcon  icon={faLinkedinIn} /></a>
 								<a href="https://ianagpawa.github.io/portfolio" target="_blank"><FontAwesomeIcon  icon={faEmpire} /></a>
@@ -45,7 +45,7 @@ export default class Home extends Component {
 							</div>
 						</div>
 					</div>
-					<p className="colophon">Copyright 2014 Company name. Designed by Themezy. All rights reserved</p>
+					<p className="colophon">Copyrightc copy&{new Date().getFullYear()} Ian Agpawa. Designed by Themezy. All rights reserved</p>
 				</div>
 			</footer>
 		</div>
