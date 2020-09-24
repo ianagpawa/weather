@@ -45,7 +45,7 @@ export default class Home extends Component {
 							</div>
 						</div>
 					</div>
-					<p className="colophon">Copyrightc copy&{new Date().getFullYear()} Ian Agpawa. Designed by Themezy. All rights reserved</p>
+					<p className="colophon">Copyright &copy;{new Date().getFullYear()} Ian Agpawa. Designed by Themezy. All rights reserved</p>
 				</div>
 			</footer>
 		</div>
