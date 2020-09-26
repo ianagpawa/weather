@@ -1,66 +1,57 @@
 import { combineReducers } from 'redux'
 import {
-  SELECT_SUBREDDIT,
-  INVALIDATE_SUBREDDIT,
-  REQUEST_POSTS,
-  RECEIVE_POSTS
-} from '../actions/actions'
+  FETCH_CURRENT_WEATHER_SUCCESS,
+  FETCH_FORECAST_WEATHER_SUCCESS,
+} from '../actions/weather';
 
-function selectedSubreddit(state = 'reactjs', action) {
+function currentWeatherDetails(state = {}, action) {
   switch (action.type) {
-    case SELECT_SUBREDDIT:
-      return action.subreddit
+    case FETCH_CURRENT_WEATHER_SUCCESS:
+      return { 
+        ...state, 
+        ...action.payload 
+      };
     default:
-      return state
+      return state;
   }
 }
 
-function posts(
-  state = {
-    isFetching: false,
-    didInvalidate: false,
-    items: []
-  },
-  action
-) {
+function forecastWeatherDetails(state = [], action) {
   switch (action.type) {
-    case INVALIDATE_SUBREDDIT:
-      return Object.assign({}, state, {
-        didInvalidate: true
-      })
-    case REQUEST_POSTS:
-      return Object.assign({}, state, {
-        isFetching: true,
-        didInvalidate: false
-      })
-    case RECEIVE_POSTS:
-      return Object.assign({}, state, {
-        isFetching: false,
-        didInvalidate: false,
-        items: action.posts,
-        lastUpdated: action.receivedAt
-      })
+    case FETCH_CURRENT_WEATHER_SUCCESS:
+      return [
+        action.payload,
+        ...state,
+      ];
+    case FETCH_FORECAST_WEATHER_SUCCESS:
+      return [
+        ...state,
+        ...action.payload.list.filter(weather => {
+          // get weather at noon of each day.
+            return weather['dt_txt'].indexOf('12:00:00') > -1;
+        })
+      ];
     default:
-      return state
+      return state;
   }
 }
 
-function postsBySubreddit(state = {}, action) {
+function todayForecastWeatherDetails(state = [], action) {
   switch (action.type) {
-    case INVALIDATE_SUBREDDIT:
-    case RECEIVE_POSTS:
-    case REQUEST_POSTS:
-      return Object.assign({}, state, {
-        [action.subreddit]: posts(state[action.subreddit], action)
-      })
+    case FETCH_FORECAST_WEATHER_SUCCESS:
+      return [
+        ...state,
+        ...action.payload.list.slice(0,6)
+      ]
     default:
-      return state
+      return state;
   }
 }
 
 const rootReducer = combineReducers({
-  postsBySubreddit,
-  selectedSubreddit
-})
+  currentWeatherDetails,
+  forecastWeatherDetails,
+  todayForecastWeatherDetails
+});
 
-export default rootReducer
+export default rootReducer;
