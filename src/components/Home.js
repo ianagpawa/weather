@@ -36,7 +36,7 @@ export default class Home extends Component {
 			<footer className="site-footer">
 				<div className="container">
 					<div className="row">
-						<div className="col-md-4 col-md-offset-8">
+						<div className="col-md-6 col-md-offset-6">
 							<div className="social-links col-md-offset-6">
 								<a href="https://github.com/ianagpawa" target="_blank"><FontAwesomeIcon  icon={faGithub} /></a>
 								<a href="https://www.linkedin.com/in/ianagpawa" target="_blank"><FontAwesomeIcon  icon={faLinkedinIn} /></a>
@@ -45,7 +45,7 @@ export default class Home extends Component {
 							</div>
 						</div>
 					</div>
-					<p className="colophon">Copyright &copy;{new Date().getFullYear()} Ian Agpawa. Designed by Themezy. All rights reserved</p>
+					<p className="colophon">Copyright &copy;{new Date().getFullYear()} <span className="ian">Ian Agpawa</span>. Designed by Themezy. All rights reserved</p>
 				</div>
 			</footer>
 		</div>

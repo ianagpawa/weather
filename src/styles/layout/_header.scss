@@ -176,11 +176,18 @@
 			.degree{
 				.num,.forecast-icon{
 					display: inline-block;
-					vertical-align: middle;
 				}
 				.num{
 					@include rem(90);
 					margin-right: 30px;
+				}
+				.forecast-icon {
+					top: 0;
+					padding-left: 55px;
+					text-align: center;
+					// padding-right: auto;
+					// margin-left: auto;
+					// margin-right: auto;
 				}
 			}
 			span{
@@ -212,7 +219,7 @@
 			text-align: center;
 			height: 23vh;
 
-			// .forecast-icon{margin-bottom: 20px;}
+			.forecast-icon{margin-bottom: 20px;}
 
 			.degree,
 			.site-description {

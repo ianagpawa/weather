@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { 
 	getDayName,
-	getHour
+	getHour,
+	getShortDate
  } from '../constants/utils';
 export default class Cards extends Component {
 	render() {
@@ -20,10 +21,12 @@ export default class Cards extends Component {
 			const dayName = getDayName(dt_txt);
 			const hour = getHour(dt_txt);
 			const dayOrText = key.indexOf('forecast') !== -1 ? dayName : hour;
+	  		const shortDate = key.indexOf('forecast') !== -1 ? getShortDate(dt_txt) : null;
 			return (
 				<div key={key} className="forecast">
 					<div className="forecast-header">
 						<div className="day">{dayOrText}</div>
+						<div>{shortDate}</div>
 					</div>
 					<div className="forecast-content">
 						<div className="forecast-icon">
