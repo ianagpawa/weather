@@ -43,6 +43,7 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
+Project is configured with gh-pages /root
 git add dist && git commit -m "Initial dist subtree commit"
 
 git subtree push --prefix dist origin gh-pages
