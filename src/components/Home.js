@@ -49,12 +49,13 @@ export default class Home extends Component {
 				</div>
 			</div>
 			
-			<div className="hero" data-bg-image="images/banner.png">
+			{/* <div className="hero" data-bg-image="images/banner.png"> */}
+			<div className="hero">
 			{errorMessage}
 				<div className="container">
 					<form className="find-location" onSubmit={this.handleSubmit}>
 						<input type="text" name="city" placeholder="Search for your city..."/>
-						<input type="submit" value="Find" />
+						<input type="submit" value="Search" />
 					</form>
 				</div>
 			</div>
@@ -81,7 +82,7 @@ export default class Home extends Component {
 							</div>
 						</div>
 					</div>
-					<p className="colophon">Copyright &copy;{new Date().getFullYear()} <span className="ian">Ian Agpawa</span>. Designed by Themezy. All rights reserved</p>
+					<p>Copyright &copy;{new Date().getFullYear()} <span className="ian">Ian Agpawa</span>. Designed by Themezy. All rights reserved</p>
 				</div>
 			</footer>
 		</div>
