@@ -9,15 +9,16 @@ export default class Cards extends Component {
 	render() {
 		const {
 			forecastWeatherDetails,
-			todayForecastWeatherDetails
+			todayForecastWeatherDetails,
+			todayForecastDetails
 		} =  this.props;
-		return (forecastWeatherDetails || todayForecastWeatherDetails).map((day, i) => {
+		return (forecastWeatherDetails || todayForecastWeatherDetails || todayForecastDetails).map((day, i) => {
 			const key = forecastWeatherDetails ? `forecast${i}` : `today${i}`;
 			const weather = day && day.weather && day.weather[0];
 			const { dt_txt } = day;
 			const temp = parseInt(day && day.main && day.main.temp);
-			const description = weather.main;
-			const url = `https://openweathermap.org/img/wn/${weather.icon }@2x.png`;
+			const description = weather && weather.main;
+			const url = `https://openweathermap.org/img/wn/${weather && weather.icon}@2x.png`;
 			const dayName = getDayName(dt_txt);
 			const hour = getHour(dt_txt);
 			const dayOrText = key.indexOf('forecast') !== -1 ? dayName : hour;
@@ -43,6 +44,7 @@ export default class Cards extends Component {
 }
 
 Cards.propTypes = {
-	forecastWeatherDetails: PropTypes.array,
-	todayForecastWeatherDetails: PropTypes.array
+	forecastWeatherDetails: PropTypes.array.isRequired,
+	todayForecastWeatherDetails: PropTypes.array.isRequired,
+	todayForecastDetails: PropTypes.array.isRequired
 }

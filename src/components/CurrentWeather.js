@@ -5,7 +5,7 @@ import { getDayName, getShortDate } from '../constants/utils';
 
 export default class CurrentWeather extends Component {
 	constructor(props) { super(props); }
-  render() {
+  	render() {
 	  const {
 		currentWeatherDetails,
 		todayForecastWeatherDetails

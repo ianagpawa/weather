@@ -21,8 +21,11 @@ export const getRequest = (params)  => {
     return dispatch => {
       dispatch(fetchFunc());
       return fetch(getUrl({type, city, units}))
-        .then(response => response.json() )
+        .then(response => {
+            if(!response.ok) { throw new Error("not ok"); }
+            return response.json();
+        })
         .then(json => dispatch(fetchSuccessFunc(json)) )
-        .catch(err => dispatch(fetchFailureFunc(err)));
+        .catch(err => dispatch(fetchFailureFunc(err)) );
     }
 }

@@ -5,13 +5,17 @@ import Cards from './Cards';
 export default class ForecastWeather extends Component {
 	constructor(props) { super(props); }
 	render() {
-		const { forecastWeatherDetails } = this.props;
+		const { 
+			forecastWeatherDetails,
+			todayForecastDetails
+		} = this.props;
+		const combined = [...todayForecastDetails, ...forecastWeatherDetails]
 		return (
 				<div className="forecast-table forecast-div">
 					<div className="container">
 						<div className="forecast-container">
 							<Cards 
-								forecastWeatherDetails={forecastWeatherDetails}
+								forecastWeatherDetails={combined}
 							/>
 						</div>
 					</div>
@@ -21,5 +25,6 @@ export default class ForecastWeather extends Component {
 }
 
 ForecastWeather.propTypes = {
-	forecastWeatherDetails: PropTypes.array.isRequired
+	forecastWeatherDetails: PropTypes.array.isRequired,
+	todayForecastDetails: PropTypes.array.isRequired
 }

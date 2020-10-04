@@ -20,19 +20,29 @@ class AsyncApp extends Component {
     getForecastWeather();
   }
 
-  componentDidUpdate(prevProps) { }
+  componentDidUpdate(prevProps) { 
+    console.log('updated')
+  }
 
   render() {
     const { 
       currentWeatherDetails,
       forecastWeatherDetails,
-      todayForecastWeatherDetails
+      todayForecastWeatherDetails,
+      todayForecastDetails,
+      fetchFailure,
+      getCurrentWeather,
+      getForecastWeather
     } = this.props;
     return (
       <Home 
+        fetchFailure={fetchFailure}
+        getCurrentWeather={getCurrentWeather}
+        getForecastWeather={getForecastWeather}
         currentWeatherDetails={currentWeatherDetails}
         forecastWeatherDetails={forecastWeatherDetails}
-        todayForecastWeatherDetails={todayForecastWeatherDetails} 
+        todayForecastWeatherDetails={todayForecastWeatherDetails}
+        todayForecastDetails={todayForecastDetails}
       />
     );
   }
@@ -41,19 +51,30 @@ class AsyncApp extends Component {
 AsyncApp.propTypes = {
   currentWeatherDetails: PropTypes.object,
   forecastWeatherDetails: PropTypes.array,
-  todayForecastWeatherDetails: PropTypes.array
+  todayForecastWeatherDetails: PropTypes.array,
+  todayForecastDetails: PropTypes.array,
+  fetchFailure: PropTypes.bool
 }
 
 function mapStateToProps(state) {
   const { 
     currentWeatherDetails, 
     forecastWeatherDetails,
-    todayForecastWeatherDetails
+    todayForecastWeatherDetails,
+    todayForecastDetails,
+    getCurrentWeather,
+    getForecastWeather,
+    fetchFailure
   } = state;
   return { 
     currentWeatherDetails,
     forecastWeatherDetails,
-    todayForecastWeatherDetails
+    todayForecastDetails,
+    todayForecastWeatherDetails,
+    getCurrentWeather,
+    getForecastWeather,
+    todayForecastDetails,
+    fetchFailure
   };
 }
 

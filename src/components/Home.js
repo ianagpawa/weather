@@ -1,19 +1,42 @@
 import React, { Component } from 'react'
 import CurrentWeather from './CurrentWeather';
 import ForecastWeather from './ForecastWeather';
+// import ErrorMessage from './ErrorMessage';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faLinkedinIn, faEmpire } from '@fortawesome/free-brands-svg-icons'
 import { faCode } from '@fortawesome/free-solid-svg-icons'
 
 export default class Home extends Component {
-	constructor(props) { super(props); }
-  render() {
+	constructor(props) { 
+		super(props);
+		this.handleSubmit = this.handleSubmit.bind(this)
+	}
+
+	handleSubmit(event) {
+		event.preventDefault();
+		const { 
+			getCurrentWeather,
+			getForecastWeather
+		} = this.props;
+		getCurrentWeather(event.target.city.value);
+		getForecastWeather(event.target.city.value);
+	}
+
+  	render() {
 	  const {
 		currentWeatherDetails,
 		forecastWeatherDetails,
-		todayForecastWeatherDetails
+		todayForecastWeatherDetails,
+		todayForecastDetails,
+		fetchFailure
 	  } = this.props;
+	 const errorMessage =  (
+		<div className={fetchFailure ? 'container text-red' : 'hidden'}>
+			<h3>Could not find your city!</h3>
+		</div>
+	  )
+
       return (
         <div className="site-content">
 			<div className="site-header">
@@ -26,12 +49,25 @@ export default class Home extends Component {
 				</div>
 			</div>
 			
+			<div className="hero" data-bg-image="images/banner.png">
+			{errorMessage}
+				<div className="container">
+					<form className="find-location" onSubmit={this.handleSubmit}>
+						<input type="text" name="city" placeholder="Search for your city..."/>
+						<input type="submit" value="Find" />
+					</form>
+				</div>
+			</div>
+			
 			<CurrentWeather 
 				currentWeatherDetails={currentWeatherDetails}
 				todayForecastWeatherDetails={todayForecastWeatherDetails} 
 			/>
 
-			<ForecastWeather forecastWeatherDetails={forecastWeatherDetails} />
+			<ForecastWeather
+				todayForecastDetails={todayForecastDetails}
+				forecastWeatherDetails={forecastWeatherDetails} 
+			/>
 
 			<footer className="site-footer">
 				<div className="container">
@@ -56,5 +92,9 @@ export default class Home extends Component {
 Home.propTypes = {
 	currentWeatherDetails: PropTypes.object,
 	forecastWeatherDetails: PropTypes.array,
-	todayForecastWeatherDetails: PropTypes.array
+	todayForecastWeatherDetails: PropTypes.array,
+	todayForecastDetails: PropTypes.array,
+	fetchFailure: PropTypes.bool,
+	getForecastWeather: PropTypes.func,
+	getCurrentWeather: PropTypes.func
 }

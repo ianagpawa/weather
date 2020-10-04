@@ -4,6 +4,7 @@
 
 .site-header{
 	padding: 50px 0;
+	background: rgba(0, 0, 0, 0.1);
 	.branding{
 		float: left;
 
@@ -119,7 +120,7 @@
 		width: 100%;
 		padding: 20px 50px 20px 20px;
 		background: $bg-color;
-		color: white;
+		color: black;
 	}
 	input[type="submit"]{
 		position: absolute;
@@ -172,6 +173,7 @@
 			.location{
 				@include em(18);
 				font-weight: 400;
+				padding-left: 2rem;
 			}
 			.degree{
 				.num,.forecast-icon{
@@ -179,7 +181,7 @@
 				}
 				.num{
 					@include rem(90);
-					margin-right: 30px;
+					padding-left: 2rem;
 				}
 				.forecast-icon {
 					top: 0;
